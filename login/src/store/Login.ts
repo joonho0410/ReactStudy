@@ -1,21 +1,45 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { 
+    createSlice,
+    createAsyncThunk,
+    PayloadAction,
+    createSelector
+ } from "@reduxjs/toolkit";
+
+import { getLogin } from "../api/api";
 
 interface LoginState {
     loginState: boolean
+    loading: boolean
 }
 
-const initialState = { loginState: false } as LoginState
+const initialState = { loginState: false, loading: false } as LoginState
+
+export const login = createAsyncThunk(
+    "Login/login",
+    async () => {
+        // const response = await getLogin('successToLogin');
+        const response = await getLogin('failToLogin');
+        return response.data.loginState; 
+    }
+)
 
 const LoginSlice = createSlice({
-    name: 'loginState',
+    name: 'login',
     initialState,
-    reducers: {
-        successLogin(state) {
-            state.loginState = true;
-        }
-    }
+    reducers: {},
+    extraReducers: builder => {
+        builder.addCase(login.pending, (state) =>{
+            state.loading = true;
+        })
+        builder.addCase(login.fulfilled, (state, { payload }) => {
+            state.loading = false;
+            state.loginState = payload;
+        });
+        builder.addCase(login.rejected, (state, action) => {
+            state.loading = false;
+            state.loginState = false;
+        });
+    },
 })
 
-export const { successLogin } = LoginSlice.actions
 export default LoginSlice.reducer;

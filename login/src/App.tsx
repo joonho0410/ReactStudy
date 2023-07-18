@@ -15,6 +15,7 @@ interface LoginProps {
 
 const App:React.FC<LoginProps> = () => {
   const loginState = useSelector((state: RootState) => state.login.loginState);
+  const loadingState = useSelector((state: RootState) => state.login.loading);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLogin = () => {
@@ -23,7 +24,12 @@ const App:React.FC<LoginProps> = () => {
 
   return (
     <div>
-      {loginState ? <Logined /> : <Login onLogin={handleLogin}/>}
+      <div>
+        {loginState ? <Logined /> : <Login onLogin={handleLogin}/>}
+      </div>
+      <div>
+        {loadingState ? <div> loading ... </div> : <div></div>}
+      </div>
     </div>
   );
 }

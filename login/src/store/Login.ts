@@ -17,8 +17,8 @@ const initialState = { loginState: false, loading: false } as LoginState
 export const login = createAsyncThunk(
     "Login/login",
     async () => {
-        // const response = await getLogin('successToLogin');
-        const response = await getLogin('failToLogin');
+        const response = await getLogin('successToLogin');
+        // const response = await getLogin('failToLogin');
         return response.data.loginState; 
     }
 )

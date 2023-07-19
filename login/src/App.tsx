@@ -43,6 +43,7 @@ const App:React.FC<LoginProps> = () => {
           ) : (
             <Route path="/loginForm" element={<LoginForm/>}/>
           )}
+          {/* default router */}
           <Route path="/*" element={<Main/>}/>
         </Routes> 
     </div>

@@ -10,10 +10,11 @@ import { getLogin, postMakeId } from "../api/api";
 interface LoginState {
     authState: boolean
     loginState: boolean
-    loading: boolean
+    loadingLogin: boolean
+    loadingMakeId: boolean
 }
 
-const initialState = { authState: false, loginState: false, loading: false } as LoginState
+const initialState = { authState: false, loginState: false, loadingLogin: false, loadingMakeId: false } as LoginState
 
 export const login = createAsyncThunk(
     "Login/login",
@@ -38,27 +39,27 @@ const LoginSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(login.pending, (state) =>{
-            state.loading = true;
+            state.loadingLogin = true;
         })
         builder.addCase(login.fulfilled, (state, { payload }) => {
-            state.loading = false;
+            state.loadingLogin = false;
             state.authState = payload;
         });
         builder.addCase(login.rejected, (state, action) => {
-            state.loading = false;
+            state.loadingLogin = false;
             state.authState = false;
         });
 
         builder.addCase(makeId.pending, (state) =>{
-            state.loading = true;
+            state.loadingMakeId = true;
         })
         builder.addCase(makeId.fulfilled, (state, { payload }) => {
-            state.loading = false;
+            state.loadingMakeId = false;
             state.loginState = payload;
             console.log(payload);
         });
         builder.addCase(makeId.rejected, (state, action) => {
-            state.loading = false;
+            state.loadingMakeId = false;
             state.loginState = false;
         });
     },

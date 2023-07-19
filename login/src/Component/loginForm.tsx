@@ -6,7 +6,8 @@ import { makeId } from "../store/Login";
 
 const LoginForm:React.FC = () => {
     const navigate = useNavigate();
-    const loginState = useSelector((state: RootState) => state.login.loginState);
+    const loading = useSelector((state: RootState) => state.login.loadingMakeId);
+    
     const dispatch = useDispatch<AppDispatch>();
 
     const [form, setForm] = useState({
@@ -28,7 +29,7 @@ const LoginForm:React.FC = () => {
 
     // }
 
-    // const handlePasswordCheck = () => {
+    // const handlePasswordsCheck = () => {
 
     // }
 
@@ -40,6 +41,7 @@ const LoginForm:React.FC = () => {
 
     return (
         <div>
+            {loading ? <div> make new id .... </div>: <div></div>}
             <form onSubmit={handleFormSubmit}>
                 <h2>Login Form</h2>
                 <label htmlFor="username">Username:</label>

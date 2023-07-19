@@ -20,7 +20,7 @@ interface LoginProps {
 const App:React.FC<LoginProps> = () => {
   const authState = useSelector((state: RootState) => state.login.authState);
   const loginState = useSelector((state: RootState) => state.login.loginState);
-  const loadingState = useSelector((state: RootState) => state.login.loading);
+  const loadingState = useSelector((state: RootState) => state.login.loadingLogin);
   
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const App:React.FC<LoginProps> = () => {
           ) : (
             <Route path="/loginForm" element={<LoginForm/>}/>
           )}
+          <Route path="/*" element={<Main/>}/>
         </Routes> 
     </div>
   );

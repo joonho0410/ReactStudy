@@ -1,8 +1,6 @@
 import { 
     createSlice,
     createAsyncThunk,
-    PayloadAction,
-    createSelector
  } from "@reduxjs/toolkit";
 
 import { getLogin, postMakeId } from "../api/api";

@@ -25,14 +25,6 @@ const LoginForm:React.FC = () => {
         setForm(nextForm);
     }
 
-    // const handleUsernameCheck = () => {
-
-    // }
-
-    // const handlePasswordsCheck = () => {
-
-    // }
-
     const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(makeId());

@@ -10,6 +10,7 @@ import Login from './Component/login'
 import Logined from './Component/logined'
 import LoginForm from "./Component/loginForm";
 import Main from "./Component/main";
+import SignIn from "./Component/singIn";
 import { login } from "./store/Login";
 
 
@@ -43,6 +44,7 @@ const App:React.FC<LoginProps> = () => {
           ) : (
             <Route path="/loginForm" element={<LoginForm/>}/>
           )}
+          <Route path="/signIn" element={<SignIn/>}/>
           {/* default router */}
           <Route path="/*" element={<Main/>}/>
         </Routes> 

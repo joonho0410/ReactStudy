@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, AppDispatch } from '../store/store'
 import { makeId } from "../store/Login";
@@ -39,6 +39,10 @@ const LoginForm:React.FC = () => {
         navigate("/mainPage");
     }
 
+    const handleOnClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+        navigate("/signIn");
+    }
+
     return (
         <div>
             {loading ? <div> make new id .... </div>: <div></div>}
@@ -65,6 +69,7 @@ const LoginForm:React.FC = () => {
                 />
                 <br />
                 <button type="submit">Submit</button>
+                <button onClick={handleOnClick}>SignIn</button>
             </form>
         </div>
     );

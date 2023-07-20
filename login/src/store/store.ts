@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { composeWithDevTools } from "redux-devtools-extension";
 import loginReducer from './Login';
+import signInReducer from './signIn';
 
 export const store = configureStore({
     reducer: {
         login: loginReducer,
+        signIn: signInReducer, 
     },
 });
 

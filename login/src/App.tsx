@@ -31,6 +31,14 @@ const App:React.FC<LoginProps> = () => {
     if (!(authState && loginState))
       navigate('/loginForm');
   }
+  // 로컬스토리지에서 데이터 가져오기
+  const isLogged = localStorage.getItem('isLogged');
+
+  if (!isLogged) {
+    localStorage.setItem('isLogged', 'hello world');
+  }
+
+  console.log(isLogged);
 
   return (
     <div>
